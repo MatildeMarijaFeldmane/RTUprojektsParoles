@@ -18,6 +18,13 @@ while True:
   # 1. Uzzināt lietotājvārdu/e-pastu un paroli
   if choice == "1": 
     print("*" * 50)
+    addrese = input("Ievadi adresi: ")
+    info = df[df["Address"] == addrese]  #Filtrē DataFrame, atgriežot tikai rindas ar norādīto adresi
+    if not info.empty: #Pārbauda, vai atbilstošais ieraksts eksistē
+      print("Lietotājvārds/e-pasts:", info["Username"].values[0])
+      print("Parole:", info["Password"].values[0])        
+    else:
+      print("Nav pievienots!")
 
   # 2. Pievienot jaunu ierakstu
   elif choice == "2":
