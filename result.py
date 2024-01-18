@@ -29,7 +29,13 @@ while True:
   # 2. Pievienot jaunu ierakstu
   elif choice == "2":
     print("*" * 50)
-
+    addrese = input("Ievadi adresi: ")
+    lietotajvards = input("Ievadi lietotājvārdu/e-pastu: ")
+    parole = input("Ievadi paroli: ")
+    new_entry = pd.DataFrame({"Address": [addrese], "Username": [lietotajvards], "Password": [parole]}) #Izveido jaunu DataFrame rindiņu ar ievadītajiem datiem
+    df = pd.concat([df, new_entry], ignore_index=True) #Pievieno jauno rindiņu esošajam DataFrame, ignorējot indeksus
+    df.to_excel(file_path, index=False, engine="openpyxl") #Saglabā DataFrame ar jauno ierakstu Excel failā, izmantojot openpyxl
+    print("Informācija pievienota!")
 
   # 3. Izdzēst ierakstu pēc adreses
   elif choice == "3":
