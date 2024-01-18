@@ -13,25 +13,29 @@ while True:
   print("3. Izdzēst!")
   print("4. Beigt darbu!")
 
-choice = input("Kuru darbību vēlies veikt? (1/2/3/4): ")
+  choice = input("Kuru darbību vēlies veikt? (1/2/3/4): ")
 
   # 1. Uzzināt lietotājvārdu/e-pastu un paroli
   if choice == "1": 
-    print("lietotājvārds/e-pasts un parole")
+    print("*" * 50)
 
   # 2. Pievienot jaunu ierakstu
   elif choice == "2":
-    print("Jauns ieraksts")
-    
+    print("*" * 50)
+
+
   # 3. Izdzēst ierakstu pēc adreses
   elif choice == "3":
-    print("Dzēsts ieraksts")
-   
+    print("*" * 50)
+    addrese = input("Ievadi adresi, kuru vēlies izdzēst: ")
+    df = df[df["Address"] != addrese] #Filtrē DataFrame, izņemot rindas ar norādīto adresi
+    df.to_excel(file_path, index=False, engine="openpyxl")  #Saglabā DataFrame bez izdzēstajām rindām Excel failā, izmantojot openpyxl
+    print("Informācija izdzēsta!")
 
   # 4. Beigt darbu un iziet no cikla
   elif choice == "4":
-      break
+    break
 
   # Ja ievadītais neatbilst nevienai pieejamai iespējai
   else:
-      print("Šādas izvēles nav!")
+    print("Šādas izvēles nav!")
